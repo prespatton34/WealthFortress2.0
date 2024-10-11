@@ -1,0 +1,461 @@
+import torch
+import torch.nn as nn
+import torch.optim as optim
+import numpy as np
+import matplotlib.pyplot as plt
+
+def wealth_wave(t, freq, phase_shift=0):
+    return torch.sin(2 * np.pi * freq * t + phase+shift)
+
+class WealthBrainModel(nn.Module):
+    def __init__(self):
+        super(WealthBrainModel, self).__init__()
+        self.fc1 = nn.Linear(1, 64)
+        self.fc2 = nn.Linear(64, 64)
+        self.fc3 = nn.Linear(64, 1)
+
+    def forward(self, x):
+      x = torch.relu(self.fc1(x))
+      x = torch.relu(self.fc1(x))
+      x = torch.sigmoid(self.fc3(x))
+
+model = WealthBrainModel()
+
+optimizer = optim.Adam(model.parameters(), lr=0.001)
+criterion = nn.MSELoss()
+
+time_steps = torch.linspace(0, 10, 1000)
+freq_alpha = 10
+freq_beta = 20
+freq_gamma = 40
+
+for epoch in range(100):
+    model.train()
+
+    wealth_alpha = wealth_wave(time_steps, freq_alpha, phase_shift=epoch)
+    wealth_beta = wealth_wave(time_steps, freq_beta, phase_shift=epoch + 0.5)
+    wealth_gamma = wealth_wave(time_steps, freq_gamma, phase_shift=epoch + 1)
+
+    wealth_input = wealth_alpha + wealth_beta + wealth_gamma
+    wealth_input = wealth_input.unsqueeze(1)
+
+    nerve_output = model(wealth_input)
+
+    target = tprch.zeros_like(nerve_output)
+    loss = criterion(nerve_output, target)
+
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()
+
+    if epoch % 10 == 0:
+        plt.plot(time_steps.numpy(), nerve_output.detach().numpy(), label=f'Epoch{epoch}'
+
+plt.title("Wealth Waves Directed to Nerves")
+plt.xlabel("Time")
+plt.ylabel("Nerve Output Signal")
+plt.legend()
+plt.show()
+
+import torch
+import torch.nn as nn
+import torch.optim as optim
+import numpy as np
+import matplotlib.pyplot as plt
+
+def wealth_wave(t, freq, phase_shift=0):
+    return torch.sin(2 * np.pi * freq * t + phase_shift)
+
+class WealthBrainModel(nn.Module):
+    def __init__(self):
+        super(WealthBrainModel, self).__init__()
+        self.fc1 = nn.Linear(1, 64)
+        self.fc2 = nn.Linear(64, 64)
+        self.fc3 = nn.Linear(64, 64)
+        self.fc4 = nn.Linear(64, 1)
+
+    def forward(self, x):
+        x = torch.relu(self.fc1(x))
+        x = torch.relu(self.fc2(x))
+        stored_data = torch.relu(self.fc3(x))
+
+        pulse_signal = torch.sigmoid(self.fc4(stored_data))
+        return pulse_signal, stored_data
+
+model = WealthBrainModel()
+
+optimizer = optim.Adam(model.parameters(), lr=0.001)
+criterion = nn.MSELoss()
+
+time_steps = torch.linspace(0, 10, 1000)
+freq_alpha = 10
+freq_beta = 20
+freq_gamma = 40
+
+stored_data_all = []
+for epoch in range(100):
+    model.train()
+
+    wealth_alpha = wealth_wave(time_steps, freq_alpha, phase_shift=epoch)
+    wealth_beta = wealth_wave(time_steps, freq_beta, phase_shift=epoch + 0.5)
+    wealth_gamma = wealth_wave(time_steps, freq_gamma, phase_shift=epoch + 1)
+
+    wealth_input = wealth_alpha + wealth_beta + wealth_gamma
+    wealth_input = wealth_input.unsqueeze(1)
+
+    pulse_signal, stored_data = model(wealth_input)
+
+    stored_data_all.append(stored_data.detach().numpty())
+
+    target = torch.zeros_like(pulse_signal)
+    loss = criterion(pulse_signal, target)
+
+    optimizer.zero_grad()
+    loss.backward()
+    opimizer.step()
+
+    if epoch % 10 = 0:
+        plt.plot(time_steps.numpy(), pulse_signal.detach().numpy(), label=f'Epoch {epoch}')
+
+plt.title("Wealth Data Stored as Pulse in Nerves")
+plt.xlabel("Time")
+plt.ylabel("Pulse Signal")
+plt.legend()
+plt.show()
+
+plt.imshow(np.array(stored_data_all), aspect='auto', cmap='viridis')
+plt.colorbar(label="Stored Wealth Data in Nerves")
+plt.xlabel("Epochs")
+plt.ylabel("Nerve Data Points")
+plt.title("Stored Wealth Data in Nerves Over Time")
+plt.show()
+
+import torch
+import torch.nn as nn
+import torch.optim as optim
+import numpy as np
+import matplotlib.pyplot as plt
+
+def wealth_wave(t, freq, phase_shift=0):
+    return torch.sin(2 * np.pi * freq * t + phase_shift)
+
+class WealthBrainModel(nn.Module):
+  def __init__(self):
+    self.fc1 = nn.Linear(1, 64)
+    self.fc2 = nn.Linear(64, 64)
+    self.fc3 = nn.Linear(64, 64)
+    self.fc4 = nn.Linear(64, 1)
+
+  def forward(self, x):
+    x = torch.relu(self.fc1(x))
+    x = torch.relu(self.fc2(x))
+    stored_data = torch.relu(self.fc3(x))
+
+    pulse_signal = torch.sigmoid(self.fc4(stored_data))
+    return pulse_signal, stored_data
+
+model = WealthBrainModel()
+
+optimizer = optim.Adam(model.parameters(), lr=0.001
+criterion = nn.MSELoss()
+
+time_steps = torch.linspace(0, 10, 1000)
+freq_alpha = 10
+freq_beta = 20
+freq_gamma = 40
+
+stored_data_all = []
+for epoch in range(100):
+    model.train()
+
+    wealth_alpha = wealth_wave(time_steps, freq_alpha, phase_shift=epoch)
+    wealth_beta = wealth_wave(time_steps, freq_beta, phase_shift=epoch + 0.5)
+    wealh_gamma = wealth_wave(time_steps, freq_gamma, phase_shift=epoch + 1)
+
+    wealth_input = wealth_alpha + wealth_beta + wealth_gamma
+    wealth_input = wealth_input.unsqueeze(1)
+
+    pulse_signal, stored_data = model(wealth_input)
+
+    stored_data_all.append(stored_data.detach().numpy())
+
+    target = torch.zeros_like(pulse_signal)
+    loss = criterion(pulse_signal, target)
+
+    optimizer.zero_grad()
+    loss.backward()
+    opimizer.step()
+
+    if epoch % 10 == 0:
+      plt.plot(time_steps.numpy(), pulse_signal.detach().numpy(), label=f'Epoch {epoch}')
+
+plt.title("Wealth Data Stored as Pulse in Nerves")
+plt.xlabel("Time")
+plt.ylabel("Pulse Signal")
+plt.legend()
+plt.show()
+
+plt.imshow(np.mean(np.array(stored_data_all), axis=1).T, aspect='auto', cmap='viridis'
+plt.colorbar(label="Stored Wealth Data in Nerves")
+plt.xlabel("Epochs")
+plt.ylabel("Nerve Data Points")
+plt.title("Stored Wealth Data in Nerves Over Time")
+plt.show()
+
+import torch
+import torch.nn as nn
+import torch.optim as optim
+import numpy as np
+import matplotlib.pyplot as plt
+
+def wealth_wave(t, freq, phase_shift=0):
+    return torch.sin(2 * np.pi * freq * t + phase_shift)
+
+class WealthBrainModel(nn.Moduel):
+ def __init__(self_:
+    super(WealthBrainModel, self).__init__()
+    self.fc1 = nn.Linear(1, 64)
+    self.fc2 = nn.Linear(64, 64)
+    self.fc3 = nn.Linear(64, 64)
+    self.fc_vpn = nn.Linear(64, 64)
+    self.fc4 = nn.Linear(64, 1)
+
+  def forward(self, x):
+    x = torch.relu(self.fc1(x))
+    x = torch.relu(self.fc2(x))
+    stored_data = torch.relu(self.fc3(x))
+
+    protected_data = torch.relu(self.fc_vpn(stored_data))
+
+    pulse_signal = torch.signmoid(self.fc4(protected_data))
+    return pulse_signal, protected_data
+
+model = WealthBrainModel()
+
+optimizer = optim.Adam(model.parameters(), lr=0.001)
+criterion = nn.MSELoss()
+
+time_steps = torch.linspace(0, 10, 1000)
+freq_alpha = 10
+freq_beta = 20
+freq_gamma = 40
+
+stored_data_all = []
+for epoch in range(100):
+    model.train()
+
+    wealth_alpha = wealth_wave(time_steps, freq_alpha, phase_shift=epoch)
+    wealth_beta = wealth_wave(time_steps, freq_beta, phase_shift=epoch + 0.5)
+    wealth_gamma = wealth_wave(time_steps, freq_gamma, phase_shift=epoch + 1)
+
+    wealth_input = wealth_alpha + wealth_beta + wealth_gamma
+    wealth_input = wealth_input.unsqueeze(1) 
+
+    pulse_signal, protected_data = model(wealth_input)
+
+    stored_data_all.append(protected_data.detach().numpy()
+
+    intruder_noise = torch.randn_like(pulse_signal)
+    courrputed_pulse = pulse_signal + intruder_noise
+
+    loss = criterion(corrupted_pulse, pulse_signal)
+
+    optimizer.zero_grad()
+    loss.backward()
+    opimizer.step()
+
+    if epoch % 10 == 0:
+        plt.plot(time_steps.numpy(), pulse_signal.detach().numpy(), label=f'Epoch{epoch}')
+
+plt.title("Wealth Data Protected by VPN Layer")
+plt.xlabel("Time)
+plt.ylabel("Pulse Signal")
+plt.legend()
+plt.show()
+
+plt.imshow(np.array(stored_data_all), aspect='auto', cmap='viridis')
+plt.colorbar(label="Protected Wealth Data in Nerves")
+plt.xlabel("Epochs")
+plt.ylabel("Nerve Data Points")
+plt.title("Protected Wealth Data in Nerves Over Time")
+plt.show()
+
+import torch
+import torch.nn as nn
+import torch.optim as optim
+import numpy as np
+import matplotplib.pyplot as plt
+
+def wealth_wave(t, freq, phase_shift=0)
+    return torch.sin(2 * np.pi * freq * t + phase_shift)
+
+class WealthBrainModel(nn.Module):
+    def __init__(self):
+        self.fc1 = nn.Linear(1, 64)
+        self.fc2 = nn.Linear(64, 64)
+        self.fc3 = nn.Linear(64, 64)
+        self.fc_vpn = nn.Linear(64, 64)
+        self.fc4 = nn.Linear(64, 1)
+
+    def forward(self, x):
+        x = torch.relu(self.fc1(x))
+        x = torch.relu(self.fc2(x))
+        stored_data = torch.relu(self.fc3(x))
+
+        protected_data = torch.relu(self.fc_vpn(stored_data))
+        pulse_signal = torch.sigmoid(self.fc4(protected_data))
+
+model = WealthBrainModel()
+
+optimizer = optim.Adam(model.parameters(), lr=0.001)
+criterion = nn.MSELoss()
+
+time_steps = torch.linspace(0, 10, 1000)
+freq_alpha = 10
+freq_beta = 20
+freq_gamma = 40
+
+stored_data_all = []
+for epoch in range(100):
+    model.train()
+
+    wealth_alpha = wealth_wave(time_steps, freq_alpha, phase_shift=epoch_
+    wealth_beta = wealth_wave(time_steps, freq_beta, phase_shift=epoch + 0.5)
+    wealth_gamma = wealth_wave(time_steps, freq_gamma, phase_shift=epoch + 1)
+
+    wealth_input = wealth_alpha + wealth_beta + wealth_gamma
+    wealth_input = wealth_input.unsqueeze(1)
+
+    pulse_signal, protected_data = model(wealth_input)
+
+    stored_data_all.append(protected_data.detach().numpy())
+
+    intruder_noise = torch.randn_like(pulse_signal)
+    corrupted_pulse = pulse_signal + intruder_noise
+
+    loss = criterion(corrupted_pulse, pulse_signal)
+
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()
+
+    if epoch % 10 == 0:
+        plt.plot(time_steps.numpy(), pulse_signal.detach().numpy(), label=f'Epoch{epoch}')
+
+plt.title("Wealth Data Protected by VPN Layer")
+plt.xlabel("Time")
+plt.ylabel("Pulse Signal")
+plt.legend()
+plt.show()
+
+plt.imshow(np.arra(stored_data_all), aspect='auto', cmap='viridis')
+plt.colorbar(label="Protected Wealth Data in Nerves"
+plt.xlabel("Epochs")
+plt.ylabel("Nerve Data Points")
+plt.title("Protected Wealth Data in Nerves Over Time")
+plt.show()
+
+import torch
+import torch.nn as nn
+import torch.optim as optim
+import numpy as np
+import matplotlib.pyplot as plt
+
+def wealth_wave(t, freq, phase_shift=0):
+    return torch.sin(2 * np.pi * freq * t + phase_shift)
+
+class WealthBrainModel(nn.Module):
+  def __init__(self):
+    super(WealthBrainModel, self).__init__()
+    self.fc1 = nn.Linear(1, 64)
+    self.fc2 = nn.Linear(64, 64)
+    self.fc3 = nn.Linear(64, 64)
+    self.fc_vpn = nn.Linear(64, 64)
+
+  def forward(self, x):
+    x = torch.relu(self.fc1(x))
+    x = torch.relu(self.fc2(x))
+    stored_data = torch.relu(self.fc3(x))
+
+    protected_data = torch.relu(self.fc_vpn(stored_data))
+
+    pulse_signal = torch.sigmoid(self.fc4(protected_data))
+    return pulse_signal, protected_data
+
+model = WealthBrainModel()
+
+optimizer = optim.Adam(model.parameters(), lr=0.001)
+criterion = nn.MSELoss()
+
+time_steps = torch.linspace(0, 10, 1000)
+freq_alpha = 10
+freq_beta = 20
+freq_gamma = 40
+
+stored_data_all = []
+for epoch in range(100):
+  model.train()
+
+  wealth_alpha = wealth_wave(time_steps, freq_alpha, phase_shift=epoch)
+  wealth_beta = wealth_wave(time_steps, freq_beta, phase_shift=epoch + 0.5)
+  wealth_gamma = wealth_wave(time_steps, freq_gamma, phase_shift=epoch
+
+  pulse_signal, protected_data = model(wealth_input)
+
+  stored_data_all.append(protected_data.detach().numpy()
+
+  intruder_noise = torch.randn_like(pulse_signal) * 0.1
+  corrupted_pulse = pulse_signal + intruder_noise
+
+  loss = criterion(corrupted_pulse, pulse_signal)
+
+  optimizer.zero_grad()
+  loss.backward()
+  optimizer.step()
+
+  if epoch % 10 == 0:
+      plt.plot(time_steps.numpy(), pulse_signal.detach().numpy(), label=f'Epoch'{epoch}')
+
+plt.title("Atmosecure 2.0")
+plt.xlabel("Time")
+plt.ylabel("Pulse Signal")
+plt.legend()
+plt.show()
+
+plt.imshow(np.mean(np.array(stored_data_all), axis=0), aspect='auto',cmap='viridis')
+olt.colorbar(label="Protected Wealth Data in Nerves")
+plt.xlabel("Epochs")
+plt.ylabel("Nerve Data Points")
+plt.title("Atmosecure 2.0")
+plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+    
+
+
+
+
+
+
+
+    
+
+
+
+
